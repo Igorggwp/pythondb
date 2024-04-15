@@ -7,9 +7,7 @@ def endereco(mydb):
     info = Faker()
 
     estados = estados_brasil()
-    
-    enderecos = []
-    for _ in range(10):
+    for _ in range(1):
         rua = info.street_name()
         numero = info.random_number(digits=3)
         bairro = info.name()
@@ -17,13 +15,10 @@ def endereco(mydb):
         estado_id = random.randint(1, len(estados))
         pais_id = 1
         active = info.boolean()
-        enderecos.append((rua, numero, bairro, cidade_id, estado_id, pais_id, active))
-
-    for endereco in enderecos:
-        rua, numero, bairro, cidade_id, estado_id, pais_id, active = endereco
+        
         mycursor.execute("INSERT INTO endereco (rua, numero, bairro, cidade_id, estado_id, pais_id, active) "
                         "VALUES (%s, %s, %s, %s, %s, %s, %s)",
                         (rua, numero, bairro, cidade_id, estado_id, pais_id, active))
-        mydb.commit()
+    mydb.commit()
         
     mycursor.close()

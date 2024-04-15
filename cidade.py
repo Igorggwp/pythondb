@@ -8,11 +8,11 @@ def cidade(mydb):
 
     estados = estados_brasil()
 
-    for _ in range(10):
+    for _ in range(1):
         nome_cidade = info.city()
         estado_id = random.randint(1, len(estados))
         mycursor.execute("INSERT INTO cidade (nome_cidade, estado_id) VALUES (%s, %s)",
                          (nome_cidade, estado_id))
-        mydb.commit()
+    mydb.commit()
     
     mycursor.close()

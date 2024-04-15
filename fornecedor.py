@@ -4,7 +4,7 @@ def fornecedor(mydb):
     mycursor = mydb.cursor()
     info = Faker('pt_BR')
 
-    for _ in range(5):
+    for _ in range(1):
         nome_fornecedor = info.company()
         cnpj_fornecedor = info.cnpj()
         email_fornecedor = info.email()

@@ -5,7 +5,7 @@ def saida_produto(mydb):
     mycursor = mydb.cursor()
     info = Faker()
 
-    for _ in range(10):
+    for _ in range(1):
         id_produto = random.randint(1, 20)
         quantidade = random.randint(1, 50)
         data_saida = info.date_this_year()

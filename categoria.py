@@ -11,16 +11,12 @@ def categoria(mydb):
         "Ferramentas", "Material de Escritório", "Produtos Químicos", "Peças Automotivas", "Produtos de Limpeza"
     ]
 
-    categorias = []
     for nome_categoria in cat:
         desc_categoria = info.sentence()
         active = info.boolean()
-        categorias.append((nome_categoria, desc_categoria, active))
 
-    for categoria in categorias:
-        sql = "INSERT INTO categoria (nome_categoria, desc_categoria, active) VALUES (%s, %s, %s)"
-        val = categoria
-        mycursor.execute(sql, val)
+        mycursor.execute("INSERT INTO categoria (nome_categoria, desc_categoria, active) VALUES (%s, %s, %s)",
+                          (nome_categoria, desc_categoria, active))
 
     mydb.commit()
 
