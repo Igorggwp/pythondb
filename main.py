@@ -12,7 +12,7 @@ from saida_produto import saida_produto
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="root",
+    password="",
     database="tradeon"
 )
 
