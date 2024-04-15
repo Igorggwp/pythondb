@@ -1,24 +1,25 @@
 from faker import Faker
-import random
 
 def fornecedor(mydb):
     mycursor = mydb.cursor()
-    info = Faker()
+    info = Faker('pt_BR')
 
-    fornecedores = []
     for _ in range(5):
         nome_fornecedor = info.company()
         cnpj_fornecedor = info.cnpj()
         email_fornecedor = info.email()
         active = info.boolean()
-        fornecedores.append((nome_fornecedor, cnpj_fornecedor, email_fornecedor, active))
 
-    for fornecedor in fornecedores:
-        sql = "INSERT INTO fornecedor (nome_fornecedor, cnpj_fornecedor, email_fornecedor, active, id_endereco) " \
-            "VALUES (%s, %s, %s, %s, %s)"
-        val = fornecedor + (random.randint(1, 10),)
-        mycursor.execute(sql, val)
+        mycursor.execute("INSERT INTO fornecedor (nome_fornecedor, cnpj_fornecedor, email_fornecedor, active) "
+                         "VALUES (%s, %s, %s, %s)",
+                         (nome_fornecedor, cnpj_fornecedor, email_fornecedor, active))
+        mydb.commit()
+
+        id_fornecedor = mycursor.lastrowid
+        telefone = info.phone_number()
+
+        mycursor.execute("INSERT INTO telefone (telefone, id_fornecedor) VALUES (%s, %s)",
+                         (telefone, id_fornecedor))
         mydb.commit()
 
     mycursor.close()
-    return fornecedores 

@@ -3,7 +3,6 @@ from estado import estados_brasil
 import random
 
 def cidade(mydb):
-    
     mycursor = mydb.cursor()
     info = Faker()
 

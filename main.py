@@ -5,7 +5,6 @@ from estado import estado
 from cidade import cidade
 from endereco import endereco
 from fornecedor import fornecedor
-from telefone import telefone
 from produto import produto
 from entrada_produto import entrada_produto
 from saida_produto import saida_produto
@@ -25,10 +24,9 @@ def menu():
     print("4. Cidade")
     print("5. Endereço")
     print("6. Fornecedor")
-    print("7. Telefone")
-    print("8. Produto")
-    print("9. Entrada de Produto")
-    print("10. Saída de Produto")
+    print("7. Produto")
+    print("8. Entrada de Produto")
+    print("9. Saída de Produto")
     print("0. Sair")
 
     opcao = input("Digite o número da opção desejada: ")
@@ -46,12 +44,10 @@ def menu():
     elif opcao == "6":
         fornecedor(mydb)
     elif opcao == "7":
-        telefone(mydb)
-    elif opcao == "8":
         produto(mydb)
-    elif opcao == "9":
+    elif opcao == "8":
         entrada_produto(mydb)
-    elif opcao == "10":
+    elif opcao == "9":
         saida_produto(mydb)
     elif opcao == "0":
         print("Encerrando...")

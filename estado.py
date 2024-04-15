@@ -12,7 +12,7 @@ def estados_brasil():
 def estado(mydb):
     mycursor = mydb.cursor()
 
-    for estado in estados_brasil:
+    for estado in estados_brasil():
         nome_estado, sigla = estado
         mycursor.execute("INSERT INTO estado (nome_estado, sigla, pais_id) VALUES (%s, %s, %s)",
                          (nome_estado, sigla, 1))

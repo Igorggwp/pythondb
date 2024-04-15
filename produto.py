@@ -7,7 +7,7 @@ def produto(mydb):
 
 
     produtos = []
-    for _ in range(200000):
+    for _ in range(200):
         nome_produto = info.word()
         desc_produto = info.sentence()
         quant_min = random.randint(1, 100)
