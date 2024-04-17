@@ -7,12 +7,12 @@ def endereco(mydb):
     info = Faker()
 
     estados = estados_brasil()
-    for _ in range(1):
+    for _ in range(50000):
         rua = info.street_name()
         numero = info.random_number(digits=3)
         bairro = info.name()
-        cidade_id = random.randint(1, 20)
-        estado_id = random.randint(1, len(estados))
+        cidade_id = random.randint(1, 1000000)
+        estado_id = random.randint(1, 27)
         pais_id = 1
         active = info.boolean()
         

@@ -1,3 +1,4 @@
+import time
 import mysql.connector
 from categoria import categoria
 from pais import pais
@@ -8,6 +9,9 @@ from fornecedor import fornecedor
 from produto import produto
 from entrada_produto import entrada_produto
 from saida_produto import saida_produto
+from produto_fornecedor import produto_fornecedor
+
+inicio = time.time()
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -15,47 +19,16 @@ mydb = mysql.connector.connect(
     password="",
     database="tradeon"
 )
+print("Inicio do loop")
+produto(mydb)
+print("2")
+produto(mydb)
+print("Fim do loop")
 
-def menu():
-    print("Escolha uma opção para popular a tabela:")
-    print("1. Categoria")
-    print("2. Pais")
-    print("3. Estado")
-    print("4. Cidade")
-    print("5. Endereço")
-    print("6. Fornecedor")
-    print("7. Produto")
-    print("8. Entrada de Produto")
-    print("9. Saída de Produto")
-    print("0. Sair")
+fim = time.time()
+segundos = fim - inicio
+minutos = segundos / 60
 
-    opcao = input("Digite o número da opção desejada: ")
-
-    if opcao == "1":
-        categoria(mydb)
-    elif opcao == "2":
-        pais(mydb)
-    elif opcao == "3":
-        estado(mydb)
-    elif opcao == "4":
-        cidade(mydb)
-    elif opcao == "5":
-        endereco(mydb)
-    elif opcao == "6":
-        fornecedor(mydb)
-    elif opcao == "7":
-        produto(mydb)
-    elif opcao == "8":
-        entrada_produto(mydb)
-    elif opcao == "9":
-        saida_produto(mydb)
-    elif opcao == "0":
-        print("Encerrando...")
-        return
-    else:
-        print("Erro.")
-    
-    menu()
-menu()
+print(f"Tempo total de execução: {minutos:.2f} minutos.")
 
 mydb.close()

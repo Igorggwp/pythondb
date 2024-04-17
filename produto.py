@@ -5,7 +5,7 @@ def produto(mydb):
     mycursor = mydb.cursor()
     info = Faker()
 
-    for _ in range(1):
+    for _ in range(1000000):
         nome_produto = info.word()
         desc_produto = info.sentence()
         quant_min = random.randint(1, 100)
@@ -14,7 +14,7 @@ def produto(mydb):
         data_validade = info.date_this_decade() if perecivel else None
         valor_unitario = random.uniform(1.0, 100.0)
         valor_venda = random.uniform(1.0, 1000.0)
-        id_categoria = random.randint(1, 10)
+        id_categoria = random.randint(1, 20)
         quantidade = random.randint(1, 1000)
         
         mycursor.execute("INSERT INTO produto (nome_produto, desc_produto, quant_min, peso_prod, perecivel, " \
@@ -25,3 +25,4 @@ def produto(mydb):
         mydb.commit()
 
     mycursor.close()
+
